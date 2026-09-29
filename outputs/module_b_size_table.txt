@@ -1,0 +1,27 @@
+Module B: box footprint size (cm) under four camera models
+
+Reference object : Box006 @ frame 135, known 20.52 x 15.54 cm (footprint only; height is not observable from a single top-down view)
+Camera K          : camera_K_archive from data/meta.json (the belt camera's own published intrinsics -- NOT the chessboard-camera K from calibrate.py, which belongs to a different camera)
+
+Box007 @ frame 1257  (known 20.74 x 15.76 cm)
+  model                        est (cm)     abs err (cm)    rel err
+  orthographic         14.87 x   21.61             0.88      4.8%
+  weak_perspective     16.09 x   23.39             1.49      8.1%
+  affine               15.19 x   23.46             1.65      9.0%
+  full_perspective     14.87 x   21.61             0.88      4.8%
+
+Box009 @ frame 2480  (known 16.44 x 12.53 cm)
+  model                        est (cm)     abs err (cm)    rel err
+  orthographic         12.50 x   23.26             3.43     23.7%
+  weak_perspective     13.49 x   25.10             4.81     33.2%
+  affine               16.01 x   26.97             7.01     48.4%
+  full_perspective     12.50 x   23.26             3.43     23.7%
+
+
+Mean absolute error across both targets, by model:
+  orthographic         2.15 cm
+  weak_perspective     3.15 cm
+  affine               4.33 cm
+  full_perspective     2.15 cm
+
+Best on this footage: orthographic (mean abs err 2.15 cm), tied exactly with full_perspective. The camera looks almost straight down at a belt that only spans a small fraction of its working distance, so the scene is close to orthographic to begin with -- the perspective-aware correction has very little foreshortening left to remove, and full_perspective's plane-fit collapses to the same answer as the plain scale transfer. affine is consistently the worst: its unconstrained shear term amplifies whatever motion-blur/shadow elongation is in the detected footprint quad (frame 135's own detected aspect ratio is 1.8:1, against a true 1.32:1 -- the detector's silhouette, not the size model, is the dominant source of error here) instead of averaging it out the way the isotropic orthographic fit does.

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Generated / heavy data (see data/fetch_data.py and data/prepare_video.py)
+data/raw/
+data/conveyor.mp4
+data/frames/
+data/*.log
+
+# Large generated artefacts
+outputs/*.mp4
+outputs/*.npz

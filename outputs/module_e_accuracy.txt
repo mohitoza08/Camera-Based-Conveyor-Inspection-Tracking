@@ -1,0 +1,48 @@
+Module E: box-type recognition, held-out accuracy
+
+Crops: Box006 11tr/4te, Box007 22tr/10te, Box009 22tr/10te
+Patch size: 150x150  Eigenspace dims: 12
+
+method                         correct/total    accuracy
+--------------------------------------------------------
+alignment (ORB+homography)              9/24       37.5%
+eigenboxes (PCA, k=12)                 22/24       91.7%
+Hu moments (invariant)                 16/24       66.7%
+
+Hu-moment class means (log-scaled h1..h7), showing separation despite each
+crop being a different rotation of the box:
+  Box006: mean  -0.61  -2.06  -2.81  -3.26  -1.30  -0.90  -2.50
+            std    0.04   0.35   0.45   0.49   6.35   4.49   6.32
+  Box007: mean  -0.59  -1.59  -2.59  -3.32  -3.86  -2.82  -5.89
+            std    0.03   0.13   0.21   0.41   5.37   3.76   2.57
+  Box009: mean  -0.63  -1.75  -2.85  -3.73   1.85   1.62  -7.18
+            std    0.03   0.18   0.27   0.48   7.41   5.00   1.06
+
+Discussion:
+  Box006 and Box007 differ by under 1 cm on every axis (see common/paths.py), so a descriptor that only sees outline shape struggles to tell them apart; that is exactly the box006/box007 confusion pattern the Hu-moment and alignment confusion matrices show below, since Hu moments are a function of the silhouette only. The eigenspace method sees raw pixel intensity (print, tape, shading), which differs between the two even though their outlines barely do, so it is the most robust of the three to that particular ambiguity -- and also the most sensitive to lighting, since a uniform brightness shift moves every crop in the same direction in eigenspace. The alignment method is the opposite: invariant to the brightness level itself (ORB descriptors are local intensity comparisons, not absolute levels) but it needs texture to find keypoints at all, so it is weakest on frames where motion blur has smeared the cardboard's few printed marks past ORB's detection threshold.
+
+Per-sample results (label -> alignment / eigenboxes / hu prediction):
+  Box006   -> Box006  OK  Box006  OK  Box006  OK
+  Box006   -> Box009  X   Box006  OK  Box007  X
+  Box006   -> ?       X   Box006  OK  Box006  OK
+  Box006   -> ?       X   Box006  OK  Box007  X
+  Box007   -> Box006  X   Box007  OK  Box009  X
+  Box007   -> Box007  OK  Box006  X   Box006  X
+  Box007   -> Box006  X   Box007  OK  Box006  X
+  Box007   -> Box007  OK  Box007  OK  Box006  X
+  Box007   -> Box006  X   Box007  OK  Box007  OK
+  Box007   -> Box007  OK  Box007  OK  Box007  OK
+  Box007   -> Box006  X   Box006  X   Box007  OK
+  Box007   -> Box006  X   Box007  OK  Box007  OK
+  Box007   -> Box009  X   Box007  OK  Box006  X
+  Box007   -> Box006  X   Box007  OK  Box007  OK
+  Box009   -> Box006  X   Box009  OK  Box009  OK
+  Box009   -> Box006  X   Box009  OK  Box009  OK
+  Box009   -> Box006  X   Box009  OK  Box009  OK
+  Box009   -> Box009  OK  Box009  OK  Box009  OK
+  Box009   -> Box009  OK  Box009  OK  Box009  OK
+  Box009   -> Box009  OK  Box009  OK  Box009  OK
+  Box009   -> Box007  X   Box009  OK  Box009  OK
+  Box009   -> Box006  X   Box009  OK  Box009  OK
+  Box009   -> Box009  OK  Box009  OK  Box009  OK
+  Box009   -> Box009  OK  Box009  OK  Box006  X

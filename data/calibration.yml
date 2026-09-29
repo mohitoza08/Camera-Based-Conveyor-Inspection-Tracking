@@ -1,0 +1,27 @@
+%YAML:1.0
+---
+K: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 536.07343241345848, 0., 342.37047332607699, 0.,
+       536.01634072693116, 235.5368760889863, 0., 0., 1. ]
+distortion: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [ -0.26509010824221763, -0.046744311164253489,
+       0.0018330266403383262, -0.00031469219165000076,
+       0.25231599415734934 ]
+rms_reprojection_error: 0.40869464255642102
+image_size: !!opencv-matrix
+   rows: 2
+   cols: 1
+   dt: i
+   data: [ 640, 480 ]
+pattern: !!opencv-matrix
+   rows: 2
+   cols: 1
+   dt: i
+   data: [ 9, 6 ]
+square_mm: 25.

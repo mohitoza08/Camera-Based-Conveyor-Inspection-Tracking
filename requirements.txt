@@ -1,0 +1,14 @@
+opencv-python==4.10.0.84
+scikit-image==0.25.2
+scikit-learn
+numpy
+scipy
+h5py
+networkx
+matplotlib
+pandas
+tqdm
+jupyterlab
+nbconvert
+nbformat
+ipykernel

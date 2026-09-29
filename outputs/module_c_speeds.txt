@@ -1,0 +1,8 @@
+Module C: belt/box speed from the RANSAC-fitted affine flow
+
+Frame pair              : 135 -> 136  (dt = 16.67 ms)
+Affine translation      : (-0.27, -8.61) px/frame  (90 RANSAC inliers of 177)
+Local scale (Module B)  : 0.0941 cm/px  (at box centroid, from the Box006 reference-object transfer)
+Speed                   : 8.61 px/frame = 516.6 px/s = 48.6 cm/s
+
+Note: this is a thrown box's instantaneous speed at this point in its arc, not a steady conveyor-belt speed -- consecutive-frame displacement changes noticeably across the toss (see the depth-varies-during-flight note in measure_box.py and the README). Reported here exactly as the brief asks: from optical flow directly.

@@ -1,0 +1,155 @@
+{
+  "video": "D:\\cv\\data\\conveyor.mp4",
+  "fps": 60.0,
+  "n_frames": 3412,
+  "width": 720,
+  "height": 540,
+  "viewpoint": 1,
+  "source_archive": "D:\\cv\\data\\raw\\iam\\240816_Archive_025_ImpactAwareObjectTracking.h5",
+  "source_license": "CC BY-NC-SA 4.0 (TU/e Impact-Aware Robotics Archive)",
+  "segments": [
+    {
+      "path": "D:\\cv\\data\\raw\\iam\\clips\\Box006_vp1.mp4",
+      "fps": 60.0,
+      "n_frames": 1192,
+      "width": 720,
+      "height": 540,
+      "camera_K_archive": [
+        [
+          692.8728637695312,
+          0.0,
+          467.3636779785156
+        ],
+        [
+          0.0,
+          692.2395629882812,
+          273.448486328125
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "box": "Box006",
+      "viewpoint": 1,
+      "recording": "Rec_20230309T131723Z",
+      "dimensions_cm": [
+        20.520000159740448,
+        15.539999306201935,
+        10.05999967455864
+      ],
+      "ground_truth_mocap": "/Rec_20230309T131723Z/SENSOR_MEASUREMENT/Mocap/POSTPROCESSING/Box006/transforms",
+      "frames_written": 1192,
+      "start_frame": 0
+    },
+    {
+      "path": "D:\\cv\\data\\raw\\iam\\clips\\Box007_vp1.mp4",
+      "fps": 60.0,
+      "n_frames": 1143,
+      "width": 720,
+      "height": 540,
+      "camera_K_archive": [
+        [
+          692.8728637695312,
+          0.0,
+          467.3636779785156
+        ],
+        [
+          0.0,
+          692.2395629882812,
+          273.448486328125
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "box": "Box007",
+      "viewpoint": 1,
+      "recording": "Rec_20230309T132255Z",
+      "dimensions_cm": [
+        20.739999413490295,
+        15.760000050067902,
+        9.889999777078629
+      ],
+      "ground_truth_mocap": "/Rec_20230309T132255Z/SENSOR_MEASUREMENT/Mocap/POSTPROCESSING/Box007/transforms",
+      "frames_written": 1143,
+      "start_frame": 1192
+    },
+    {
+      "path": "D:\\cv\\data\\raw\\iam\\clips\\Box009_vp1.mp4",
+      "fps": 60.0,
+      "n_frames": 1077,
+      "width": 720,
+      "height": 540,
+      "camera_K_archive": [
+        [
+          692.8728637695312,
+          0.0,
+          467.3636779785156
+        ],
+        [
+          0.0,
+          692.2395629882812,
+          273.448486328125
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "box": "Box009",
+      "viewpoint": 1,
+      "recording": "Rec_20230309T150611Z",
+      "dimensions_cm": [
+        16.439999639987946,
+        12.530000507831573,
+        12.02000007033348
+      ],
+      "ground_truth_mocap": "/Rec_20230309T150611Z/SENSOR_MEASUREMENT/Mocap/POSTPROCESSING/Box009/transforms",
+      "frames_written": 1077,
+      "start_frame": 2335
+    }
+  ],
+  "representative_frames": [
+    {
+      "index": 204,
+      "path": "D:\\cv\\data\\frames\\frame_00_f00204.png"
+    },
+    {
+      "index": 954,
+      "path": "D:\\cv\\data\\frames\\frame_01_f00954.png"
+    },
+    {
+      "index": 1705,
+      "path": "D:\\cv\\data\\frames\\frame_02_f01705.png"
+    },
+    {
+      "index": 2456,
+      "path": "D:\\cv\\data\\frames\\frame_03_f02456.png"
+    },
+    {
+      "index": 3207,
+      "path": "D:\\cv\\data\\frames\\frame_04_f03207.png"
+    }
+  ],
+  "note": "Each source recording contains exactly one tossed box (object_environment = 'point; single; bounce'), so the pipeline sees one box at a time, and three box types in sequence across the concatenated video. The mocap paths are recorded for validation only; the vision pipeline never reads them.",
+  "calibration": {
+    "npz": "D:\\cv\\data\\calibration.npz",
+    "pattern": [
+      9,
+      6
+    ],
+    "square_mm": 25.0,
+    "rms_px": 0.408694642556421,
+    "image_size": [
+      640,
+      480
+    ],
+    "n_views": 13,
+    "note": "Intrinsics come from OpenCV's sample chessboard photographs, which were taken with a different camera than the conveyor footage. They are internally consistent and validated against the published reference, but they are not the intrinsics of the belt camera; see common/scale.py for how the metric scale is transferred."
+  }
+}
