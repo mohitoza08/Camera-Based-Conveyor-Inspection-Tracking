@@ -13,3 +13,6 @@ data/*.log
 # Large generated artefacts
 outputs/*.mp4
 outputs/*.npz
+
+# Deliverable videos referenced in the README
+!outputs/module_d_tracking.mp4
